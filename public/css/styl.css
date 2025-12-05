@@ -5,3 +5,140 @@
 .navbar-brand img {
     width: 50px;
 }
+
+/* 1. Základný font a farba pozadia */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    padding-top: 56px; /* Bootstrap navbar fix */
+}
+
+/* 2. Štýlovanie hlavného obsahu */
+.web-content {
+    padding: 20px 0;
+}
+
+/* 3. Vzhľad tlačidiel s akciami */
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    transition: background-color 0.3s ease;
+}
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+/* 4. Štýl pre kontajner s chybami formulára */
+.form-errors {
+    border: 1px solid #dc3545;
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+/* 5. Štýl pre nadpisy tabuliek */
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 5px;
+}
+
+/* 6. Štýl pre pole vyhľadávania (index hráčov) */
+#search {
+    width: 100%;
+    max-width: 400px;
+    margin: 15px 0;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* 7. Štýl pre tabuľku (index hráčov) */
+#players-table thead th {
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+/* 8. Štýl pre odkazy na akcie */
+#players-table td a {
+    color: #007bff;
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+/* 9. Zvýraznenie bio sekcie v detailoch (ak by bola) */
+.player-bio {
+    font-style: italic;
+    color: #6c757d;
+    border-left: 3px solid #6c757d;
+    padding-left: 10px;
+}
+
+/* 10. Štýl pre text upozornenia */
+.navbar-text b {
+    color: #007bff;
+}
+
+/* ==================================== */
+/* RESPONZÍVNY DIZAJN */
+/* ==================================== */
+
+@media (max-width: 768px) {
+    /* 11. Zmena zobrazenia navigačnej lišty, ak by Bootstrap zlyhal */
+    .navbar .container-fluid {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navbar .navbar-text {
+        margin-top: 10px;
+    }
+
+    /* 12. Pre formy: zväčšíme font inputov pre lepšie dotykové ovládanie */
+    input[type="text"], input[type="date"], select, textarea {
+        font-size: 16px;
+    }
+
+    /* 13. Kľúčové pre tabuľky: Zmena tabuľky na zoznam kariet */
+    /* Táto technika skryje hlavičku a mení riadky na bloky */
+    #players-table, #players-table thead, #players-table tbody, #players-table th, #players-table td, #players-table tr {
+        display: block;
+    }
+
+    #players-table thead {
+        /* Skryjeme vizuálnu hlavičku tabuľky */
+        display: none;
+    }
+
+    #players-table tr {
+        /* Každý riadok bude samostatná karta */
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+    }
+
+    #players-table td {
+        /* Každá bunka sa zobrazí na novom riadku */
+        border: none;
+        position: relative;
+        padding-left: 50%; /* Vytvoríme priestor pre label */
+        text-align: left;
+    }
+
+    /* Vytvoríme vizuálny label pre každú bunku na základe poradia stĺpca (čísla sa môžu líšiť) */
+    #players-table td:before {
+        content: attr(data-label); /* Atribút musíme pridať do HTML! */
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+    }
+}

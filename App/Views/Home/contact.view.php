@@ -1,24 +1,23 @@
-<?php
+<h1>Kontaktujte FUTSAL CONNECT</h1>
 
-/** @var \Framework\Support\LinkGenerator $link */
-?>
+<p class="lead">
+    Máš otázky k registrácii, administrácii dokumentov, alebo k transferovému procesu? Sme tu pre teba.
+</p>
 
-<div class="row">
-    <div class="col">
-        <h3>Faculty of Management Science and Informatics</h3>
-        <strong>Address</strong>: Univerzitná 8215/1, 010 26 Žilina, Slovakia<br>
-        <strong>Tel. number</strong>: +421/41 513 4121<br>
-
-        <strong>GPS</strong>: 49°12'6,4"N 18°45'42,6"E
+<div class="row mt-4">
+    <div class="col-md-6">
+        <h3>Kontakt pre podporu</h3>
+        <ul class="list-unstyled">
+            <li>📧 **E-mail:** support@futsalconnect.sk</li>
+            <li>📞 **Telefón:** +421 90X XXX XXX</li>
+        </ul>
     </div>
-</div>
-<div class="row mt-3">
-    <div class="col">
-        <iframe width="100%" height="300" src="https://www.openstreetmap.org/export/embed.html?bbox=18.747396469116214%2C49.193792384417996%2C18.776578903198246%2C49.210336337994846&amp;layer=mapnik&amp;marker=49.202065053033984%2C18.761987686157227"></iframe>
-    </div>
-</div>
-<div class="row mt-3">
-    <div class="col">
-        <a href="<?= $link->url("home.index") ?>">Back to main page</a>
+    <div class="col-md-6">
+        <h3>Adresa agentúry</h3>
+        <p>
+            FUTSAL CONNECT, s.r.o.<br>
+            Fiktívna ulica 123<br>
+            010 01 Žilina, Slovensko
+        </p>
     </div>
 </div>

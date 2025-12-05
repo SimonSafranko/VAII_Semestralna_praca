@@ -1,39 +1,53 @@
 <?php
-
-/** @var \Framework\Support\LinkGenerator $link */
+/** @var \App\Models\Hrac[] $hraci */
 ?>
 
-<div class="container-fluid">
+    <h1>Vitajte na portáli FUTSAL CONNECT!</h1>
+
+    <p class="lead">
+        Tvoj nový nástroj pre správu futsalovej kariéry a hľadanie talentov.
+    </p>
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <h3>Pre Hráčov</h3>
+            <p>
+                Vytvor si detailný profil (fotografie, kariérne údaje, štatistiky).
+                Komunikuj s klubmi a prijímaj žiadosti o záujem (try-out/hosťovanie/prestup).
+            </p>
+            <a href="<?= $link->url('Hrac.create') ?>" class="btn btn-success">Registrovať sa ako hráč</a>
+        </div>
+        <div class="col-md-6">
+            <h3>Pre Kluby</h3>
+            <p>
+                Filtruj a vyhľadávaj hráčov z celého sveta, posielaj im žiadosti a spravuj profil klubu.
+                Uľahčujeme administratívu, aby si sa mohol sústrediť na hru.
+            </p>
+            <a href="<?= App\Configuration::LOGIN_URL ?>" class="btn btn-info text-white">Prihlásiť sa ako klub</a>
+        </div>
+    </div>
+
+    <hr class="my-5">
+
+    <h2>🔥 Najnovší registrovaní hráči</h2>
+
+<?php if (!empty($hraci)): ?>
     <div class="row">
-        <div class="col mt-5">
-            <div class="text-center">
-                <h2>Vaííčko MVC FW</h2>
-                <h3>Version <?= App\Configuration::FW_VERSION ?></h3>
-                <img src="<?= $link->asset('images/vaiicko_logo.png') ?>" alt="Framework Logo">
-                <p>
-                    Congratulations, you have successfully installed and run the framework
-                    <strong>Vaííčko</strong> <?= App\Configuration::FW_VERSION ?>!<br>
-                    We hope that you will create a great application using this framework.<br>
-                </p>
-                <p>
-                    This simple framework was created for teaching purposes and to better understand how the MVC
-                    architecture works.<br>
-                    It is intended for students of the subject <em>web application development</em>, but not only
-                    for them.
-                </p>
+        <?php for ($i = 0; $i < min(3, count($hraci)); $i++): ?>
+            <div class="col-md-4 mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= htmlspecialchars($hraci[$i]->getMeno() . ' ' . $hraci[$i]->getPriezvisko()) ?></h5>
+                        <p class="card-text">
+                            Pozícia: **<?= htmlspecialchars($hraci[$i]->getPozicia()) ?>**<br>
+                            Krajina: <?= htmlspecialchars($hraci[$i]->getKrajina()) ?>
+                        </p>
+                        <a href="<?= $link->url('Hrac.index') ?>" class="btn btn-sm btn-outline-primary">Zobraziť všetkých</a>
+                    </div>
+                </div>
             </div>
-        </div>
+        <?php endfor; ?>
     </div>
-    <div class="row mt-3">
-        <div class="col text-center">
-            <h4>Authors</h4>
-            <div>
-                <a href="mailto:Patrik.Hrkut@fri.uniza.sk">doc. Ing. Patrik Hrkút, PhD.</a><br>
-                <a href="mailto:Michal.Duracik@fri.uniza.sk">Ing. Michal Ďuračík, PhD.</a><br>
-                <a href="mailto:Matej.Mesko@fri.uniza.sk">Ing. Matej Meško, PhD.</a><br><br>
-                &copy; 2020-<?= date('Y') ?> University of Žilina, Faculty of Management Science and Informatics,
-                Department of Software Technologies
-            </div>
-        </div>
-    </div>
-</div>
+<?php else: ?>
+    <p>Aktuálne nemáme žiadnych registrovaných hráčov. Buď prvý!</p>
+<?php endif; ?>

@@ -23,13 +23,13 @@
     <tbody>
     <?php foreach ($hraci as $hrac): ?>
         <tr>
-            <td class="player-name">
+            <td class="player-name" data-label="Meno:">
                 <?= htmlspecialchars($hrac->getMeno()) ?>
             </td>
-            <td><?= htmlspecialchars($hrac->getPriezvisko()) ?></td>
-            <td class="player-country"><?= htmlspecialchars($hrac->getKrajina()) ?></td>
-            <td><?= htmlspecialchars($hrac->getPozicia()) ?></td>
-            <td>
+            <td data-label="Priezvisko:"><?= htmlspecialchars($hrac->getPriezvisko()) ?></td>
+            <td class="player-country" data-label="Krajina:"><?= htmlspecialchars($hrac->getKrajina()) ?></td>
+            <td data-label="Pozícia:"><?= htmlspecialchars($hrac->getPozicia()) ?></td>
+            <td data-label="Akcie:">
                 <a href="?c=Hrac&a=edit&id=<?= $hrac->getId() ?>">Upraviť</a>
                 |
                 <a href="?c=Hrac&a=delete&id=<?= $hrac->getId() ?>"

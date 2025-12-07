@@ -139,22 +139,29 @@ class AuthController extends BaseController
             $meno = trim((string)$request->value('meno'));
             $priezvisko = trim((string)$request->value('priezvisko'));
 
-            if ($meno === '') $errors['meno'] = 'Meno je povinné.';
-            if ($priezvisko === '') $errors['priezvisko'] = 'Priezvisko je povinné.';
+            if ($meno === '') {
+                $errors['meno'] = 'Meno je povinné.';
+            }
+            if ($priezvisko === '') {
+                $errors['priezvisko'] = 'Priezvisko je povinné.';
+            }
 
             $specificValues = [
                 'meno' => $meno,
                 'priezvisko' => $priezvisko,
                 // Ostatné polia hráča (pozícia, krajina atď.) sa môžu vyplniť neskôr po prihlásení
             ];
-
         } elseif ($role === 'club') {
             // C. Rozšírená validácia a spracovanie (pre Klub)
             $nazov = trim((string)$request->value('nazov'));
             $region = trim((string)$request->value('region'));
 
-            if ($nazov === '') $errors['nazov'] = 'Názov klubu je povinný.';
-            if ($region === '') $errors['region'] = 'Región je povinný.';
+            if ($nazov === '') {
+                $errors['nazov'] = 'Názov klubu je povinný.';
+            }
+            if ($region === '') {
+                $errors['region'] = 'Región je povinný.';
+            }
 
             $specificValues = [
                 'nazov' => $nazov,

@@ -1,14 +1,21 @@
 <?php
 /** @var array $errors */
+
 /** @var array $values */
-/** @var \Framework\Support\LinkGenerator $link */
-/** @var \Framework\Support\View $view */
+/** @var LinkGenerator $link */
+
+/** @var View $view */
+
+use Framework\Support\LinkGenerator;
+use Framework\Support\View;
 
 $view->setLayout('auth');
 
-function fieldValue(array $values, string $key): string {
+function fieldValue(array $values, string $key): string
+{
     return htmlspecialchars($values[$key] ?? '', ENT_QUOTES);
 }
+
 ?>
 
 <div class="container my-5">
@@ -16,15 +23,19 @@ function fieldValue(array $values, string $key): string {
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
             <h1 class="text-center">Registrácia Klubu</h1>
 
-            <?php if (!empty($errors)): ?>
+            <?php
+            if (!empty($errors)): ?>
                 <div class="form-errors alert alert-danger">
                     <ul>
-                        <?php foreach ($errors as $msg): ?>
+                        <?php
+                        foreach ($errors as $msg): ?>
                             <li><?= htmlspecialchars($msg) ?></li>
-                        <?php endforeach; ?>
+                        <?php
+                        endforeach; ?>
                     </ul>
                 </div>
-            <?php endif; ?>
+            <?php
+            endif; ?>
 
             <form method="post" action="<?= $link->url('auth.processRegistration') ?>">
                 <input type="hidden" name="role" value="club">

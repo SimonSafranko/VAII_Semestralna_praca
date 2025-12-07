@@ -1,8 +1,15 @@
 <?php
-/** @var \App\Models\Pouzivatel $pouzivatel */
-/** @var \App\Models\Hrac|null   $hrac */
-/** @var \App\Models\Klub|null   $klub */
-/** @var \Framework\Support\LinkGenerator $link */
+/** @var Pouzivatel $pouzivatel */
+
+/** @var Hrac|null $hrac */
+/** @var Klub|null $klub */
+/** @var LinkGenerator $link */
+
+use App\Models\Hrac;
+use App\Models\Klub;
+use App\Models\Pouzivatel;
+use Framework\Support\LinkGenerator;
+
 ?>
 
 <h1>Môj profil</h1>
@@ -12,7 +19,8 @@
     <?= htmlspecialchars($pouzivatel->getEmail() ?? '', ENT_QUOTES) ?>
 </p>
 
-<?php if ($hrac): ?>
+<?php
+if ($hrac): ?>
 
     <h2>Hráčsky profil</h2>
     <ul>
@@ -28,7 +36,8 @@
         <a href="?c=Hrac&a=edit&id=<?= $hrac->getId() ?>">Upraviť hráčsky profil</a>
     </p>
 
-<?php elseif ($klub): ?>
+<?php
+elseif ($klub): ?>
 
     <h2>Klubový profil</h2>
     <ul>
@@ -41,11 +50,13 @@
         <a href="?c=Klub&a=edit&id=<?= $klub->getId() ?>">Upraviť klub</a>
     </p>
 
-<?php else: ?>
+<?php
+else: ?>
 
     <p>Nemáš ešte vyplnený hráčsky ani klubový profil.</p>
 
-<?php endif; ?>
+<?php
+endif; ?>
 
 <hr class="my-4">
 

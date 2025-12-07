@@ -3,7 +3,9 @@
 namespace Framework\Core;
 
 use App\Configuration;
-use Framework\Auth\AppUser;
+use Auth\AppUser;
+use ErrorException;
+use Exception;
 use Framework\DB\Connection;
 use Framework\Http\HttpException;
 use Framework\Http\Request;
@@ -11,6 +13,7 @@ use Framework\Http\Responses\RedirectResponse;
 use Framework\Http\Responses\Response;
 use Framework\Http\Session;
 use Framework\Support\LinkGenerator;
+use Throwable;
 
 /**
  * Class App
@@ -50,7 +53,7 @@ class App
     private ?IAuthenticator $auth;
 
     /**
-     * @var \Framework\Http\Session|null The session instance for managing session data, or null if not yet created.
+     * @var Session|null The session instance for managing session data, or null if not yet created.
      */
     private ?Session $session;
 
@@ -84,7 +87,7 @@ class App
      *
      * This method handles routing, controller actions, authorization, and error management.
      *
-     * @throws \Exception If an error occurs that is not an HttpException.
+     * @throws Exception If an error occurs that is not an HttpException.
      */
     public function run(): void
     {
@@ -100,14 +103,17 @@ class App
             // Attempt to authorize the requested action.
             if ($this->router->getController()->authorize($this->request, $this->router->getAction())) {
                 // Call the specified action method on the controller with Request as required parameter (no reflection)
-                $response = call_user_func([$this->router->getController(), $this->router->getAction()], $this->request);
+                $response = call_user_func([$this->router->getController(), $this->router->getAction()],
+                    $this->request);
 
                 // If the response is valid, send it to the client.
                 if ($response instanceof Response) {
                     $response->send();
                 } else {
-                    throw new \Exception("Action " . $this->router->getFullControllerName() . "." .
-                        $this->router->getAction() . "didn't return an instance of Response.");
+                    throw new Exception(
+                        "Action " . $this->router->getFullControllerName() . "." .
+                        $this->router->getAction() . "didn't return an instance of Response."
+                    );
                 }
             } else {
                 // If authorization fails, check if the user is logged in or redirect to the login page.
@@ -117,7 +123,7 @@ class App
                     (new RedirectResponse(Configuration::LOGIN_URL))->send();
                 }
             }
-        } catch (\Throwable $exception) {
+        } catch (Throwable $exception) {
             // Clear any partially rendered output.
             ob_end_clean();
 
@@ -194,7 +200,7 @@ class App
     /**
      * Gets the session instance, creating a new session if it doesn't exist.
      *
-     * @return \Framework\Http\Session The current session instance.
+     * @return Session The current session instance.
      */
     public function getSession(): Session
     {
@@ -226,7 +232,7 @@ class App
                 return false; // allow normal PHP error handling (e.g., for @ operator)
             }
 
-            throw new \ErrorException($message, 0, $severity, $file, $line);
+            throw new ErrorException($message, 0, $severity, $file, $line);
         });
     }
 
@@ -259,13 +265,19 @@ class App
                 $prevLevel = $currLevel;
             }
 
-            $errorEx = new \ErrorException($last['message'] ?? 'Fatal error', 0, $last['type'] ?? E_ERROR, $last['file'] ?? 'unknown', $last['line'] ?? 0);
+            $errorEx = new ErrorException(
+                $last['message'] ?? 'Fatal error',
+                0,
+                $last['type'] ?? E_ERROR,
+                $last['file'] ?? 'unknown',
+                $last['line'] ?? 0
+            );
             $httpEx = HttpException::from($errorEx, 500);
 
             try {
                 $handler = new (Configuration::ERROR_HANDLER_CLASS)();
                 $handler->handleError($app, $httpEx)->send();
-            } catch (\Throwable $e) {
+            } catch (Throwable $e) {
                 // Last-resort fallback if even the handler fails
                 if (!headers_sent()) {
                     http_response_code(500);

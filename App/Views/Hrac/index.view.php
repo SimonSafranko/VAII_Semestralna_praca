@@ -1,5 +1,8 @@
 <?php
-/** @var \App\Models\Hrac[] $hraci */
+/** @var Hrac[] $hraci */
+
+use App\Models\Hrac;
+
 ?>
 
 <h1>Hráči</h1>
@@ -17,7 +20,8 @@
     </tr>
     </thead>
     <tbody>
-    <?php foreach ($hraci as $hrac): ?>
+    <?php
+    foreach ($hraci as $hrac): ?>
         <tr>
             <td class="player-name" data-label="Meno:">
                 <?= htmlspecialchars($hrac->getMeno()) ?>
@@ -26,7 +30,8 @@
             <td class="player-country" data-label="Krajina:"><?= htmlspecialchars($hrac->getKrajina()) ?></td>
             <td data-label="Pozícia:"><?= htmlspecialchars($hrac->getPozicia()) ?></td>
         </tr>
-    <?php endforeach; ?>
+    <?php
+    endforeach; ?>
     </tbody>
 </table>
 

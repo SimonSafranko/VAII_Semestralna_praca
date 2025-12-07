@@ -1,8 +1,13 @@
 <?php
 
 /** @var string $contentHTML */
-/** @var \Framework\Core\IAuthenticator $auth */
-/** @var \Framework\Support\LinkGenerator $link */
+
+/** @var IAuthenticator $auth */
+/** @var LinkGenerator $link */
+
+use Framework\Core\IAuthenticator;
+use Framework\Support\LinkGenerator;
+
 ?>
 
 <!DOCTYPE html>

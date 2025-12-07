@@ -1,8 +1,12 @@
 <?php
 
 /** @var string|null $message */
-/** @var \Framework\Support\LinkGenerator $link */
-/** @var \Framework\Support\View $view */
+
+/** @var LinkGenerator $link */
+/** @var View $view */
+
+use Framework\Support\LinkGenerator;
+use Framework\Support\View;
 
 $view->setLayout('auth');
 ?>
@@ -42,7 +46,6 @@ $view->setLayout('auth');
                             </a>
                         </p>
                     </div>
-                    <!-- ⬆⬆⬆ -->
                 </div>
             </div>
         </div>

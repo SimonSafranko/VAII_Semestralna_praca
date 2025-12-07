@@ -1,8 +1,14 @@
 <?php
 
 /** @var string $contentHTML */
-/** @var \Framework\Auth\AppUser $user */
-/** @var \Framework\Support\LinkGenerator $link */
+
+/** @var AppUser $user */
+
+/** @var LinkGenerator $link */
+
+use Auth\AppUser;
+use Framework\Support\LinkGenerator;
+
 ?>
 <!DOCTYPE html>
 <html lang="sk">
@@ -49,23 +55,28 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?= $link->url('Klub.index') ?>">Kluby</a>
                 </li>
-                <?php if ($user->isLoggedIn()) { ?>
+                <?php
+                if ($user->isLoggedIn()) { ?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= $link->url('Ziadosť.index') ?>">Žiadosti</a>
                     </li>
-                    <?php if ($user->isAdmin()) { ?>
+                    <?php
+                    if ($user->isAdmin()) { ?>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= $link->url('Admin.index') ?>">Admin</a>
                         </li>
-                    <?php } ?>
-                <?php } ?>
+                        <?php
+                    } ?>
+                    <?php
+                } ?>
 
                 <li class="nav-item">
                     <a class="nav-link" href="<?= $link->url('home.contact') ?>">Kontakt</a>
                 </li>
 
             </ul>
-            <?php if ($user->isLoggedIn()) { ?>
+            <?php
+            if ($user->isLoggedIn()) { ?>
                 <span class="navbar-text me-3">
         Prihlásený ako: <b><?= $user->getName() ?></b>
     </span>
@@ -85,7 +96,8 @@
                     </li>
                 </ul>
 
-            <?php } else { ?>
+                <?php
+            } else { ?>
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link btn btn-primary text-white"
@@ -94,7 +106,8 @@
                         </a>
                     </li>
                 </ul>
-            <?php } ?>
+                <?php
+            } ?>
         </div>
     </div>
 </nav>

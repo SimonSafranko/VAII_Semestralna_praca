@@ -37,14 +37,36 @@ class Pouzivatel extends Model implements IIdentity
     }
 
     // --- GETTERY --- //
-    public function getId(): ?int { return $this->id; }
-    public function getEmail(): ?string { return $this->email; }
-    public function getHeslo(): ?string { return $this->heslo; }
-    public function getJeAdmin(): ?int { return $this->je_admin; }
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function getHeslo(): ?string
+    {
+        return $this->heslo;
+    }
+
+    public function getJeAdmin(): ?int
+    {
+        return $this->je_admin;
+    }
 
     // --- SETTERY --- //
-    public function setEmail(string $email): void { $this->email = $email; }
-    public function setHeslo(string $heslo): void { $this->heslo = $heslo; }
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
+    }
+
+    public function setHeslo(string $heslo): void
+    {
+        $this->heslo = $heslo;
+    }
 
     // prijímame bool alebo int, do DB vždy ukladáme 0/1
     public function setJeAdmin(bool|int $jeAdmin): void

@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Auth;
+namespace Auth;
 
 use Framework\Core\App;
 use Framework\Core\IIdentity;
@@ -19,6 +19,7 @@ class DummyAuthenticator extends SessionAuthenticator
     public const PASSWORD_HASH = '$2y$10$GRA8D27bvZZw8b85CAwRee9NH5nj4CQA6PDFMc90pN9Wi4VAWq3yq';
     // Display name for the logged-in user
     public const USERNAME = "Admin";
+
     // Application instance
 
     public function __construct(App $app)

@@ -27,25 +27,99 @@ class Hrac extends Model
     }
 
     // --- GETTERY --- //
-    public function getId(): ?int { return $this->id; }
-    public function getPouzivatelId(): ?int { return $this->pouzivatel_id; }
-    public function getMeno(): ?string { return $this->meno; }
-    public function getPriezvisko(): ?string { return $this->priezvisko; }
-    public function getDatumNarodenia(): ?string { return $this->datum_narodenia; }
-    public function getKrajina(): ?string { return $this->krajina; }
-    public function getPozicia(): ?string { return $this->pozicia; }
-    public function getPreferovanaNoha(): ?string { return $this->preferovana_noha; }
-    public function getFotoCesta(): ?string { return $this->foto_cesta; }
-    public function getBio(): ?string { return $this->bio; }
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getPouzivatelId(): ?int
+    {
+        return $this->pouzivatel_id;
+    }
+
+    public function getMeno(): ?string
+    {
+        return $this->meno;
+    }
+
+    public function getPriezvisko(): ?string
+    {
+        return $this->priezvisko;
+    }
+
+    public function getDatumNarodenia(): ?string
+    {
+        return $this->datum_narodenia;
+    }
+
+    public function getKrajina(): ?string
+    {
+        return $this->krajina;
+    }
+
+    public function getPozicia(): ?string
+    {
+        return $this->pozicia;
+    }
+
+    public function getPreferovanaNoha(): ?string
+    {
+        return $this->preferovana_noha;
+    }
+
+    public function getFotoCesta(): ?string
+    {
+        return $this->foto_cesta;
+    }
+
+    public function getBio(): ?string
+    {
+        return $this->bio;
+    }
 
     // --- SETTERY --- //
-    public function setPouzivatelId(?int $id): void { $this->pouzivatel_id = $id; }
-    public function setMeno(string $meno): void { $this->meno = $meno; }
-    public function setPriezvisko(string $priezvisko): void { $this->priezvisko = $priezvisko; }
-    public function setDatumNarodenia(string $datum): void { $this->datum_narodenia = $datum; }
-    public function setKrajina(string $krajina): void { $this->krajina = $krajina; }
-    public function setPozicia(string $pozicia): void { $this->pozicia = $pozicia; }
-    public function setPreferovanaNoha(string $noha): void { $this->preferovana_noha = $noha; }
-    public function setFotoCesta(?string $cesta): void { $this->foto_cesta = $cesta; }
-    public function setBio(?string $bio): void { $this->bio = $bio; }
+    public function setPouzivatelId(?int $id): void
+    {
+        $this->pouzivatel_id = $id;
+    }
+
+    public function setMeno(string $meno): void
+    {
+        $this->meno = $meno;
+    }
+
+    public function setPriezvisko(string $priezvisko): void
+    {
+        $this->priezvisko = $priezvisko;
+    }
+
+    public function setDatumNarodenia(string $datum): void
+    {
+        $this->datum_narodenia = $datum;
+    }
+
+    public function setKrajina(string $krajina): void
+    {
+        $this->krajina = $krajina;
+    }
+
+    public function setPozicia(string $pozicia): void
+    {
+        $this->pozicia = $pozicia;
+    }
+
+    public function setPreferovanaNoha(string $noha): void
+    {
+        $this->preferovana_noha = $noha;
+    }
+
+    public function setFotoCesta(?string $cesta): void
+    {
+        $this->foto_cesta = $cesta;
+    }
+
+    public function setBio(?string $bio): void
+    {
+        $this->bio = $bio;
+    }
 }

@@ -1,23 +1,30 @@
 <?php
 /** @var array $errors */
+
 /** @var array $values */
 
-function fieldValue(array $values, string $key): string {
+function fieldValue(array $values, string $key): string
+{
     return htmlspecialchars($values[$key] ?? '', ENT_QUOTES);
 }
+
 ?>
 
 <h1>Nový hráč</h1>
 
-<?php if (!empty($errors)): ?>
+<?php
+if (!empty($errors)): ?>
     <div class="form-errors">
         <ul>
-            <?php foreach ($errors as $msg): ?>
+            <?php
+            foreach ($errors as $msg): ?>
                 <li><?= htmlspecialchars($msg) ?></li>
-            <?php endforeach; ?>
+            <?php
+            endforeach; ?>
         </ul>
     </div>
-<?php endif; ?>
+<?php
+endif; ?>
 
 <form method="post" action="?c=Hrac&a=store" id="hrac-form">
     <div>
@@ -59,9 +66,13 @@ function fieldValue(array $values, string $key): string {
         <label for="preferovana_noha">Preferovaná noha</label>
         <select id="preferovana_noha" name="preferovana_noha">
             <option value="">— neznáme —</option>
-            <option value="ľavá"   <?= (fieldValue($values, 'preferovana_noha') === 'ľavá') ? 'selected' : '' ?>>Ľavá</option>
-            <option value="pravá"  <?= (fieldValue($values, 'preferovana_noha') === 'pravá') ? 'selected' : '' ?>>Pravá</option>
-            <option value="obidve" <?= (fieldValue($values, 'preferovana_noha') === 'obidve') ? 'selected' : '' ?>>Obidve</option>
+            <option value="ľavá" <?= (fieldValue($values, 'preferovana_noha') === 'ľavá') ? 'selected' : '' ?>>Ľavá
+            </option>
+            <option value="pravá" <?= (fieldValue($values, 'preferovana_noha') === 'pravá') ? 'selected' : '' ?>>Pravá
+            </option>
+            <option value="obidve" <?= (fieldValue($values, 'preferovana_noha') === 'obidve') ? 'selected' : '' ?>>
+                Obidve
+            </option>
         </select>
     </div>
 

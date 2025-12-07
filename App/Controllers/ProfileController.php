@@ -40,8 +40,8 @@ class ProfileController extends BaseController
 
         return $this->html([
             'pouzivatel' => $identity,
-            'hrac'       => $hrac,
-            'klub'       => $klub,
+            'hrac' => $hrac,
+            'klub' => $klub,
         ]);
     }
 }

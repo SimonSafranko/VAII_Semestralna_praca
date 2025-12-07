@@ -1,12 +1,13 @@
 <?php
 
-namespace Framework\Auth;
+namespace Auth;
 
 use App\Configuration;
 use Framework\Core\App;
 use Framework\Core\IAuthenticator;
 use Framework\Core\IIdentity;
 use Framework\Http\Session;
+use RuntimeException;
 
 abstract class SessionAuthenticator implements IAuthenticator
 {
@@ -28,7 +29,7 @@ abstract class SessionAuthenticator implements IAuthenticator
 
     /**
      * Abstract method to authenticate a user based on provided username and password.
-     * 
+     *
      * This method must be implemented by subclasses to provide the actual authentication logic.
      *
      * @param string $username User's login attempt.
@@ -48,9 +49,8 @@ abstract class SessionAuthenticator implements IAuthenticator
             // Store the entire User object in the session
             $this->session->set(Configuration::IDENTITY_SESSION_KEY, $identity);
             return true;
-        }
-        elseif ($identity !== null) {
-            throw new \RuntimeException('Authenticated identity must implement IIdentity interface.');
+        } elseif ($identity !== null) {
+            throw new RuntimeException('Authenticated identity must implement IIdentity interface.');
         }
         return false;
     }
@@ -74,7 +74,7 @@ abstract class SessionAuthenticator implements IAuthenticator
     {
         $identity = $this->session->get(Configuration::IDENTITY_SESSION_KEY);
         if ($identity !== null && !($identity instanceof IIdentity)) {
-            throw new \RuntimeException('Stored identity must implement IIdentity interface.');
+            throw new RuntimeException('Stored identity must implement IIdentity interface.');
         }
         return new AppUser($identity);
     }

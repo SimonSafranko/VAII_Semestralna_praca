@@ -2,7 +2,7 @@
 
 namespace Framework\Core;
 
-use Framework\Auth\AppUser;
+use Auth\AppUser;
 
 /**
  * Interface IAuthenticator

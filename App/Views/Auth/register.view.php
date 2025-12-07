@@ -1,5 +1,8 @@
 <?php
-/** @var \Framework\Support\LinkGenerator $link */
+/** @var LinkGenerator $link */
+
+use Framework\Support\LinkGenerator;
+
 ?>
 <div class="text-center my-5">
     <h1>Registrácia do FUTSAL CONNECT</h1>

@@ -3,7 +3,7 @@
 namespace App\Auth;
 
 use App\Models\Pouzivatel;
-use Framework\Auth\SessionAuthenticator;
+use Auth\SessionAuthenticator;
 use Framework\Core\IIdentity;
 
 /**

@@ -1,7 +1,12 @@
 <?php
 
-/** @var \Framework\Support\LinkGenerator $link */
-/** @var \Framework\Auth\AppUser $user */
+/** @var LinkGenerator $link */
+
+/** @var AppUser $user */
+
+use Auth\AppUser;
+use Framework\Support\LinkGenerator;
+
 ?>
 
 <div class="container-fluid">

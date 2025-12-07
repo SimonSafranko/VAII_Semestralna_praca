@@ -1,7 +1,13 @@
 <?php
-/** @var \Framework\Support\LinkGenerator $link */
-/** @var \Framework\Support\View $view */
-/** @var \Framework\Auth\AppUser $user */
+/** @var LinkGenerator $link */
+
+/** @var View $view */
+
+/** @var AppUser $user */
+
+use Auth\AppUser;
+use Framework\Support\LinkGenerator;
+use Framework\Support\View;
 
 $view->setLayout('auth');
 ?>

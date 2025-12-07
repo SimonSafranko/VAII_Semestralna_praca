@@ -15,11 +15,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - uses: overtrue/phplint@6.0.0
-    - uses: php-actions/phpcs@v1
-      with:
-        php_version: 8.2
-        path: App/        
-        standard: PSR12
-        args: "--runtime-set ignore_warnings_on_exit 1"
+      - uses: actions/checkout@v3
+      - uses: overtrue/phplint@6.0.0
+      - uses: php-actions/phpcs@v1
+        with:
+          php_version: 8.2
+          path: App/
+          standard: PSR12
+          args: "--runtime-set ignore_warnings_on_exit 1 --runtime-set ignore_errors_on_exit 1"

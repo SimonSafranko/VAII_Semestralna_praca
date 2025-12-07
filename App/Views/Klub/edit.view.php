@@ -1,23 +1,30 @@
 <?php
 /** @var array $errors */
+
 /** @var array $values */
 
-function fieldValue(array $values, string $key): string {
+function fieldValue(array $values, string $key): string
+{
     return htmlspecialchars($values[$key] ?? '', ENT_QUOTES);
 }
+
 ?>
 
 <h1>Upraviť klub</h1>
 
-<?php if (!empty($errors)): ?>
+<?php
+if (!empty($errors)): ?>
     <div class="alert alert-danger">
         <ul>
-            <?php foreach ($errors as $msg): ?>
+            <?php
+            foreach ($errors as $msg): ?>
                 <li><?= htmlspecialchars($msg) ?></li>
-            <?php endforeach; ?>
+            <?php
+            endforeach; ?>
         </ul>
     </div>
-<?php endif; ?>
+<?php
+endif; ?>
 
 <form method="post" action="?c=Klub&a=update">
     <input type="hidden" name="id" value="<?= fieldValue($values, 'id') ?>">

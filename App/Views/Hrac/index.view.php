@@ -4,20 +4,16 @@
 
 <h1>Hráči</h1>
 
-<p>
-    <a href="?c=Hrac&a=create">+ Pridať hráča</a>
-</p>
+<label for="search">Vyhľadať hráča:</label>
+<input type="search" id="search" placeholder="Hľadať podľa mena alebo krajiny">
 
-<input type="text" id="search" placeholder="Hľadať podľa mena alebo krajiny" />
-
-<table id="players-table" border="1" cellpadding="5">
+<table id="players-table" class="players-table">
     <thead>
     <tr>
         <th>Meno</th>
         <th>Priezvisko</th>
         <th>Krajina</th>
         <th>Pozícia</th>
-        <th>Akcie</th>
     </tr>
     </thead>
     <tbody>
@@ -29,14 +25,6 @@
             <td data-label="Priezvisko:"><?= htmlspecialchars($hrac->getPriezvisko()) ?></td>
             <td class="player-country" data-label="Krajina:"><?= htmlspecialchars($hrac->getKrajina()) ?></td>
             <td data-label="Pozícia:"><?= htmlspecialchars($hrac->getPozicia()) ?></td>
-            <td data-label="Akcie:">
-                <a href="?c=Hrac&a=edit&id=<?= $hrac->getId() ?>">Upraviť</a>
-                |
-                <a href="?c=Hrac&a=delete&id=<?= $hrac->getId() ?>"
-                   onclick="return confirm('Naozaj chceš zmazať tohto hráča?');">
-                    Zmazať
-                </a>
-            </td>
         </tr>
     <?php endforeach; ?>
     </tbody>

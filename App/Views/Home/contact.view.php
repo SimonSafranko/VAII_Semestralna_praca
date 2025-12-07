@@ -8,8 +8,8 @@
     <div class="col-md-6">
         <h3>Kontakt pre podporu</h3>
         <ul class="list-unstyled">
-            <li>📧 **E-mail:** support@futsalconnect.sk</li>
-            <li>📞 **Telefón:** +421 90X XXX XXX</li>
+            <li>📧 E-mail: support@futsalconnect.sk</li>
+            <li>📞 Telefón: +421 90X XXX XXX</li>
         </ul>
     </div>
     <div class="col-md-6">

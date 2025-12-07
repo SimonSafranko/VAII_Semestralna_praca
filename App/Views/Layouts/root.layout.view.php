@@ -8,11 +8,13 @@
 <html lang="sk">
 <head>
     <title>FUTSAL CONNECT | <?= App\Configuration::APP_NAME ?></title>
-    <link rel="apple-touch-icon" sizes="180x180" href="<?= $link->asset('favicons/apple-touch-icon.png') ?>">
-    <link rel="icon" type="image/png" sizes="32x32" href="<?= $link->asset('favicons/favicon-32x32.png') ?>">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?= $link->asset('favicons/favicon-16x16.png') ?>">
-    <link rel="manifest" href="<?= $link->asset('favicons/site.webmanifest') ?>">
-    <link rel="shortcut icon" href="<?= $link->asset('favicons/favicon.ico') ?>">
+
+    <!-- Jeden favicon – FUTSAL CONNECT logo -->
+    <link rel="icon" type="image/png"
+          href="<?= $link->asset('images/futsal_connect_logo.png') ?>">
+    <link rel="shortcut icon"
+          href="<?= $link->asset('images/futsal_connect_logo.png') ?>">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -21,6 +23,7 @@
     <link rel="stylesheet" href="<?= $link->asset('css/styl.css') ?>">
     <script src="<?= $link->asset('js/script.js') ?>"></script>
 </head>
+
 <body>
 <nav class="navbar navbar-expand-lg bg-light sticky-top">
     <div class="container-fluid">
@@ -29,7 +32,7 @@
                  title="FUTSAL CONNECT - Futsalová Agentúra"
                  alt="Futsal Connect Logo"
                  style="height: 40px; margin-right: 10px;">
-            **FUTSAL CONNECT**
+            FUTSAL CONNECT
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
@@ -62,18 +65,33 @@
                 </li>
 
             </ul>
-
             <?php if ($user->isLoggedIn()) { ?>
-                <span class="navbar-text me-3">Prihlásený ako: <b><?= $user->getName() ?></b></span>
+                <span class="navbar-text me-3">
+        Prihlásený ako: <b><?= $user->getName() ?></b>
+    </span>
+
                 <ul class="navbar-nav">
+                    <li class="nav-item me-2">
+                        <a class="nav-link btn btn-outline-primary"
+                           href="<?= $link->url('profile.index') ?>">
+                            Môj profil
+                        </a>
+                    </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-danger" href="<?= $link->url('auth.logout') ?>">Odhlásiť</a>
+                        <a class="nav-link btn btn-outline-danger"
+                           href="<?= $link->url('auth.logout') ?>">
+                            Odhlásiť
+                        </a>
                     </li>
                 </ul>
+
             <?php } else { ?>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary text-white" href="<?= App\Configuration::LOGIN_URL ?>">Prihlásenie / Registrácia</a>
+                        <a class="nav-link btn btn-primary text-white"
+                           href="<?= App\Configuration::LOGIN_URL ?>">
+                            Prihlásenie / Registrácia
+                        </a>
                     </li>
                 </ul>
             <?php } ?>

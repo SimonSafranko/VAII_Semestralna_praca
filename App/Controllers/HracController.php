@@ -195,4 +195,36 @@ class HracController extends BaseController
 
         return $this->redirect($this->url('index'));
     }
+
+    public function authorize(Request $request, string $action): bool
+    {
+        // verejné: zoznam hráčov
+        if (in_array($action, ['index'])) {
+            return true;
+        }
+
+        // na všetko ostatné treba login
+        if (!$this->user->isLoggedIn()) {
+            return false;
+        }
+
+        // admin môže všetko
+        if ($this->user->isAdmin()) {
+            return true;
+        }
+
+        // hráč môže upravovať len sám seba
+        if (in_array($action, ['edit', 'update', 'delete'])) {
+            $id = (int)$request->value('id');
+            $hrac = Hrac::getOne($id);
+
+            if ($hrac && $hrac->getPouzivatelId() === $this->user->getId()) {
+                return true;
+            }
+
+            return false;
+        }
+
+        return false;
+    }
 }

@@ -83,6 +83,18 @@ h1 {
     color: #007bff;
 }
 
+ .players-table {
+     border-collapse: collapse;
+     width: 100%;
+ }
+
+.players-table th,
+.players-table td {
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+
 /* ==================================== */
 /* RESPONZÍVNY DIZAJN */
 /* ==================================== */

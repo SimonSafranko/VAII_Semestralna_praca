@@ -5,7 +5,7 @@
 
 /** @var AppUser $user */
 
-use Auth\AppUser;
+use Framework\Auth\AppUser;
 use Framework\Support\LinkGenerator;
 use Framework\Support\View;
 

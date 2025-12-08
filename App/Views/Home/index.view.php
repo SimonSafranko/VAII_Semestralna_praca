@@ -6,7 +6,7 @@
 /** @var LinkGenerator $link */
 
 use App\Models\Hrac;
-use Auth\AppUser;
+use Framework\Auth\AppUser;
 use Framework\Support\LinkGenerator;
 
 ?>

@@ -1,6 +1,6 @@
 <?php
 
-namespace Auth;
+namespace Framework\Auth;
 
 use Framework\Core\App;
 use Framework\Core\IIdentity;

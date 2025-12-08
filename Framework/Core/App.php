@@ -3,7 +3,7 @@
 namespace Framework\Core;
 
 use App\Configuration;
-use Auth\AppUser;
+use Framework\Auth\AppUser;
 use ErrorException;
 use Exception;
 use Framework\DB\Connection;

@@ -57,7 +57,7 @@ class AppUser
     }
 
     /**
-     * Magic method to forward calls to the identity object if it exists.
+     * Magic method to forwarad calls to the identity object if it exists.
      *
      * @param string $name The method name being called.
      * @param array $arguments The arguments passed to the method.

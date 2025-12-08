@@ -3,7 +3,7 @@
 namespace Framework\Core;
 
 use Exception;
-use Auth\AppUser;
+use Framework\Auth\AppUser;
 use Framework\Http\Request;
 use Framework\Http\Responses\JsonResponse;
 use Framework\Http\Responses\RedirectResponse;

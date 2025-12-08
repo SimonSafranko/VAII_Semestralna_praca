@@ -3,12 +3,13 @@
 
 /** @var array $values */
 /** @var LinkGenerator $link */
+
 /** @var View $view */
 
 use Framework\Support\LinkGenerator;
 use Framework\Support\View;
 
-$view->setLayout('auth'); // Použijeme jednoduchý layout bez navigácie
+$view->setLayout('auth');
 
 function fieldValue(array $values, string $key): string
 {

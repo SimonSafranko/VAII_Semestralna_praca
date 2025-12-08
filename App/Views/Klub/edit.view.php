@@ -14,7 +14,7 @@ function fieldValue(array $values, string $key): string
 
 <?php
 if (!empty($errors)): ?>
-    <div class="alert alert-danger">
+    <div class="alert alert-danger alert-auto-hide">
         <ul>
             <?php
             foreach ($errors as $msg): ?>
@@ -61,7 +61,6 @@ endif; ?>
 </form>
 
 <script>
-    // jednoduchá JS validácia na klientovi
     document.querySelector('form').addEventListener('submit', function (e) {
         const nazov = document.getElementById('nazov').value.trim();
         const region = document.getElementById('region').value.trim();

@@ -19,7 +19,6 @@ class Klub extends Model
         return 'klub';
     }
 
-    // --- GETTERY --- //
     public function getId(): ?int
     {
         return $this->id;
@@ -55,7 +54,6 @@ class Klub extends Model
         return $this->created_at;
     }
 
-    // --- SETTERY --- //
     public function setPouzivatelId(?int $id): void
     {
         $this->pouzivatel_id = $id;

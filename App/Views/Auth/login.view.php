@@ -3,6 +3,7 @@
 /** @var string|null $message */
 
 /** @var LinkGenerator $link */
+
 /** @var View $view */
 
 use Framework\Support\LinkGenerator;

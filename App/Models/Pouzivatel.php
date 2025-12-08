@@ -10,7 +10,6 @@ class Pouzivatel extends Model implements IIdentity
     protected ?int $id = null;
     protected ?string $email = null;
     protected ?string $heslo = null;
-    // tu je zmena: int namiesto bool + default 0
     protected ?int $je_admin = 0;
 
     public const IDENTITY_KEY = 'id';
@@ -20,7 +19,6 @@ class Pouzivatel extends Model implements IIdentity
         return 'pouzivatel';
     }
 
-    // --- IIdentity --- //
     public function getIdentityKey(): int
     {
         return $this->id;
@@ -36,7 +34,6 @@ class Pouzivatel extends Model implements IIdentity
         return (int)$this->je_admin === 1;
     }
 
-    // --- GETTERY --- //
     public function getId(): ?int
     {
         return $this->id;
@@ -57,7 +54,6 @@ class Pouzivatel extends Model implements IIdentity
         return $this->je_admin;
     }
 
-    // --- SETTERY --- //
     public function setEmail(string $email): void
     {
         $this->email = $email;
@@ -68,7 +64,6 @@ class Pouzivatel extends Model implements IIdentity
         $this->heslo = $heslo;
     }
 
-    // prijímame bool alebo int, do DB vždy ukladáme 0/1
     public function setJeAdmin(bool|int $jeAdmin): void
     {
         $this->je_admin = $jeAdmin ? 1 : 0;

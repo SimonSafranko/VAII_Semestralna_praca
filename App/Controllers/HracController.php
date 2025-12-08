@@ -9,18 +9,12 @@ use App\Models\Hrac;
 
 class HracController extends BaseController
 {
-    /**
-     * Zoznam hráčov
-     */
     public function index(Request $request): Response
     {
         $hraci = Hrac::getAll();
         return $this->html(['hraci' => $hraci]);
     }
 
-    /**
-     * Formulár na vytvorenie
-     */
     public function create(): Response
     {
         return $this->html([
@@ -29,15 +23,10 @@ class HracController extends BaseController
         ]);
     }
 
-    /**
-     * OPRAVA 1: Validácia musí prijímať $request ako parameter,
-     * a používať ho priamo, nie cez $this->request().
-     */
     private function validateHracForm(Request $request): array
     {
         $errors = [];
 
-        // Používame $request->value(), nie $this->request()->value()
         $meno = trim((string)$request->value('meno'));
         $priezvisko = trim((string)$request->value('priezvisko'));
         $datumNarodenia = (string)$request->value('datum_narodenia');
@@ -67,12 +56,8 @@ class HracController extends BaseController
         return $errors;
     }
 
-    /**
-     * OPRAVA 2: Metóda store musí prijať Request $request
-     */
     public function store(Request $request): Response
     {
-        // Posielame $request do validátora
         $errors = $this->validateHracForm($request);
 
         $values = [
@@ -106,12 +91,9 @@ class HracController extends BaseController
         return $this->redirect($this->url('index'));
     }
 
-    /**
-     * OPRAVA 3: Metóda edit potrebuje ID z requestu
-     */
     public function edit(Request $request): Response
     {
-        $id = (int)$request->value('id'); // $request namiesto $this->request()
+        $id = (int)$request->value('id');
         $hrac = Hrac::getOne($id);
 
         if ($hrac === null) {
@@ -135,9 +117,6 @@ class HracController extends BaseController
         ]);
     }
 
-    /**
-     * OPRAVA 4: Metóda update potrebuje Request $request
-     */
     public function update(Request $request): Response
     {
         $id = (int)$request->value('id');
@@ -147,7 +126,6 @@ class HracController extends BaseController
             return $this->redirect($this->url('index'));
         }
 
-        // Znova posielame request do validátora
         $errors = $this->validateHracForm($request);
 
         $values = [
@@ -181,9 +159,6 @@ class HracController extends BaseController
         return $this->redirect($this->url('index'));
     }
 
-    /**
-     * OPRAVA 5: Delete tiež potrebuje Request pre získanie ID
-     */
     public function delete(Request $request): Response
     {
         $id = (int)$request->value('id');
@@ -198,22 +173,18 @@ class HracController extends BaseController
 
     public function authorize(Request $request, string $action): bool
     {
-        // verejné: zoznam hráčov
         if (in_array($action, ['index'])) {
             return true;
         }
 
-        // na všetko ostatné treba login
         if (!$this->user->isLoggedIn()) {
             return false;
         }
 
-        // admin môže všetko
         if ($this->user->isAdmin()) {
             return true;
         }
 
-        // hráč môže upravovať len sám seba
         if (in_array($action, ['edit', 'update', 'delete'])) {
             $id = (int)$request->value('id');
             $hrac = Hrac::getOne($id);

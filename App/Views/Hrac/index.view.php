@@ -34,17 +34,3 @@ use App\Models\Hrac;
     endforeach; ?>
     </tbody>
 </table>
-
-<script>
-    // „netriviálny“ JS: live filtrovanie tabuľky podľa mena/krajiny
-    document.getElementById('search').addEventListener('input', function () {
-        const filter = this.value.toLowerCase();
-        const rows = document.querySelectorAll('#players-table tbody tr');
-
-        rows.forEach(row => {
-            const name = row.querySelector('.player-name').textContent.toLowerCase();
-            const country = row.querySelector('.player-country').textContent.toLowerCase();
-            row.style.display = (name.includes(filter) || country.includes(filter)) ? '' : 'none';
-        });
-    });
-</script>

@@ -9,27 +9,20 @@ use Framework\Http\Responses\Response;
 
 class KlubController extends BaseController
 {
-    /**
-     * Len prihlásení môžu riešiť klub.
-     */
     public function authorize(Request $request, string $action): bool
     {
-        // zoznam klubov môže vidieť každý
         if ($action === 'index') {
             return true;
         }
 
-        // na všetko ostatné musí byť prihlásený
         if (!$this->user->isLoggedIn()) {
             return false;
         }
 
-        // admin môže všetko
         if ($this->user->isAdmin()) {
             return true;
         }
 
-        // klub môže upravovať len svoj vlastný záznam
         if (in_array($action, ['edit', 'update'], true)) {
             $id = (int)$request->value('id');
             $klub = Klub::getOne($id);
@@ -41,22 +34,15 @@ class KlubController extends BaseController
             return false;
         }
 
-        // iné akcie – defaultne zakázať
         return false;
     }
 
-    /**
-     * Zoznam klubov (nemusíš veľmi riešiť, ale hodí sa na test).
-     */
     public function index(Request $request): Response
     {
         $kluby = Klub::getAll();
         return $this->html(['kluby' => $kluby]);
     }
 
-    /**
-     * Formulár na úpravu klubu.
-     */
     public function edit(Request $request): Response
     {
         $id = (int)$request->value('id');
@@ -80,9 +66,6 @@ class KlubController extends BaseController
         ]);
     }
 
-    /**
-     * Validácia formulára pre klub.
-     */
     private function validateKlubForm(Request $request): array
     {
         $errors = [];
@@ -106,9 +89,6 @@ class KlubController extends BaseController
         return $errors;
     }
 
-    /**
-     * Spracovanie úpravy klubu.
-     */
     public function update(Request $request): Response
     {
         $id = (int)$request->value('id');
@@ -142,7 +122,6 @@ class KlubController extends BaseController
 
         $klub->save();
 
-        // po uložení môžeš ísť na profil
         return $this->redirect($this->url('profile.index'));
     }
 }

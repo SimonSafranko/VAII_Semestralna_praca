@@ -3,7 +3,6 @@
 
 /** @var array $values */
 
-// Helper funkcia pre výpis hodnôt (rovnaká ako pri create)
 function fieldValue(array $values, string $key): string
 {
     return htmlspecialchars($values[$key] ?? '', ENT_QUOTES);
@@ -90,7 +89,6 @@ endif; ?>
 </form>
 
 <script>
-    // Validácia (rovnaká ako pri create)
     document.getElementById('hrac-form').addEventListener('submit', function (e) {
         const meno = document.getElementById('meno').value.trim();
         const priezvisko = document.getElementById('priezvisko').value.trim();

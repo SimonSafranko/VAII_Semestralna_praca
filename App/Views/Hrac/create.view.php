@@ -86,7 +86,6 @@ endif; ?>
 </form>
 
 <script>
-    // Klientská kontrola formulára (client-side validation)
     document.getElementById('hrac-form').addEventListener('submit', function (e) {
         const meno = document.getElementById('meno').value.trim();
         const priezvisko = document.getElementById('priezvisko').value.trim();

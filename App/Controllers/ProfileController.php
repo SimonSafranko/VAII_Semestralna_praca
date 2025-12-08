@@ -12,7 +12,6 @@ use Framework\Http\Responses\Response;
 
 class ProfileController extends BaseController
 {
-    // Sem môžu len prihlásení
     public function authorize(Request $request, string $action): bool
     {
         return $this->user->isLoggedIn();
@@ -24,17 +23,14 @@ class ProfileController extends BaseController
         $identity = $this->user->getIdentity();
 
         if (!$identity) {
-            // Pre istotu – fallback
             return $this->redirect(Configuration::LOGIN_URL);
         }
 
         $userId = $identity->getId();
 
-        // Skús nájsť Hráča naviazaného na pouzivatel_id
         $hraci = Hrac::getAll('pouzivatel_id = ?', [$userId]);
         $hrac = $hraci[0] ?? null;
 
-        // Skús nájsť Klub naviazaný na pouzivatel_id
         $kluby = Klub::getAll('pouzivatel_id = ?', [$userId]);
         $klub = $kluby[0] ?? null;
 

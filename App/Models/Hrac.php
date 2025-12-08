@@ -17,16 +17,11 @@ class Hrac extends Model
     protected ?string $foto_cesta = null;
     protected ?string $bio = null;
 
-    /**
-     * Názov tabuľky v DB.
-     * Musí byť statická, aby bola kompatibilná s Framework\Core\Model.
-     */
     public static function getTableName(): string
     {
         return 'hrac';
     }
 
-    // --- GETTERY --- //
     public function getId(): ?int
     {
         return $this->id;
@@ -77,7 +72,6 @@ class Hrac extends Model
         return $this->bio;
     }
 
-    // --- SETTERY --- //
     public function setPouzivatelId(?int $id): void
     {
         $this->pouzivatel_id = $id;
